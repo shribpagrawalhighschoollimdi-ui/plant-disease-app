@@ -2,8 +2,8 @@ import google.generativeai as genai
 from PIL import Image
 import streamlit as st
 
-# ૧. API Key કન્ફિગરેશન (તમારી API કી અહીં ડબલ કોટ્સ વચ્ચે મૂકો)
-API_KEY = "તમારી_GEMINI_API_KEY_અહીં_લખો"
+# ૧. API Key કન્ફિગરેશન (તમારી API Key અહીં લખો)
+API_KEY = "AQ.Ab8RN6I_6BSycSqPQAa_T4qDa2JdcHAOabtYPOJWoE3LrQBnxA"
 genai.configure(api_key=API_KEY)
 
 # ૨. પેજ સેટઅપ
@@ -13,7 +13,7 @@ st.set_page_config(
     layout="centered",
 )
 
-# ૩. શાળા અને નિર્માતાનું આકર્ષક હેડર
+# ૩. શાળા અને નિર્માતા હેડર
 st.markdown(
     """
 <div style='text-align: center; padding: 16px; background-color: #e8f5e9; border: 2px solid #1b4332; border-radius: 12px; margin-bottom: 20px;'>
@@ -38,7 +38,8 @@ uploaded_file = st.file_uploader(
 
 if uploaded_file is not None:
   img = Image.open(uploaded_file)
-  st.image(img, caption="અપલોડ કરેલ પાંદડું", use_column_width=True)
+  # અહીં use_container_width વાપરવાથી એરર સોલ્વ થઈ જશે
+  st.image(img, caption="અપલોડ કરેલ પાંદડું", use_container_width=True)
 
   if st.button("🔍 રોગ શોધો અને ઉપાય જાણો"):
     with st.spinner("AI દ્વારા પાંદડાનું વિશ્લેષણ થઈ રહ્યું છે..."):
@@ -58,7 +59,7 @@ if uploaded_file is not None:
         st.success("✅ વિશ્લેષણ પૂર્ણ થયું!")
         st.markdown(response.text)
       except Exception as e:
-        st.error(f"ભૂલ આવી: {e}")
+        st.error(f"વિશ્લેષણમાં ભૂલ આવી: {e}")
 
 # ૫. ફૂટર
 st.markdown("---")
