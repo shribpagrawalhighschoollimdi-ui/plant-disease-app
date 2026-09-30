@@ -3,7 +3,7 @@ from PIL import Image
 import streamlit as st
 
 # ૧. API Key કન્ફિગરેશન (તમારી API Key અહીં લખો)
-API_KEY = "AQ.Ab8RN6I_6BSycSqPQAa_T4qDa2JdcHAOabtYPOJWoE3LrQBnxA"
+API_KEY = "AQ.Ab8RN6LeeE8vfJy5vVRm1UPpnLzwVkAmGCHJxoPbRvD7wrNwhA"
 genai.configure(api_key=API_KEY)
 
 # ૨. પેજ સેટઅપ
